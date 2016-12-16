@@ -1,0 +1,20 @@
+0 1 * * *  mv /var/www/cheekr_save.sql /var/www/cheekr_save_bk.sql >> ~/save.log
+10 1 * * *  mysqldump -u root -pCHEEKR_billy.2610 > /var/www/cheekr_save.sql >> ~/save.log
+20 1 * * * rm /var/www/cheek_save_bk.sql >> ~/save.log
+0 2 * * *  mv /var/www/wordpress_save.zip  /var/www/wordpress_save_bk.zip >> ~/save.log
+0 3 * * *  zip -r /var/www/wordpress_save.zip  /var/www/html/wordpress >> ~/save.log
+0 5 * * *  rm /var/www/wordpress_save_bk.zip >> ~/save.log
+
+
+
+
+
+
+/var/www/save/zip/"$today".zip
+
+
+
+
+zip -r /var/www/wordpress_save.zip  /var/www/html/wordpress & > /dev/null
+        echo "备份完成" >> ~/save.log
+mysqldump -u root -p123456 cheekr>cheekr.sql
